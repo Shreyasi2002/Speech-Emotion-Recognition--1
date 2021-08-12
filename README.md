@@ -1,11 +1,6 @@
 # Speech Emotion Recognition
 This is a Speech Emotion Recognition based on RAVDESS dataset, project repository for summer 2021, Brain and Cognitive Science Society.
 
-Clone repo using:
-```bat
-git clone https://github.com/Aaka3021/Speech-Emotion-Recognition--1.git
-```
-
 ## Abstract:
 
 Speech Emotion Recognition, abbreviated as SER, is the act of attempting to recognize human emotion and the associated 
@@ -23,62 +18,92 @@ After training we can deploy this model for predicting with live voices.
 
 Learn the basics of Python, ML/DL, NLP, librosa, sklearn, etc , Literature Review , analyzing the dataset and Feature extraction. Building and training the model on the training data, followed by testing on test data. And finally, testing the model on live audio input (unseen) and collecting the results:)
 
+## Dataset
+We have used the RAVDESS Dataset for our project. The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS) contains 7356 files (total size: 24.8 GB). The database contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched statements in a neutral North American accent.
 
-## Schedule:
-
-Week1: 
-  - covering ml\dl basics
-
-Week 2:   
-  - plotting waveform and spectrogram
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/waveform.png' width='50%' height='50%'>
 
-  - learning audio preprocessing for feature extraction
+Here is the filename identifiers as per the official RAVDESS website:
+
+ * Modality (01 = full-AV, 02 = video-only, 03 = audio-only).
+ * Vocal channel (01 = speech, 02 = song).
+ * Emotion (01 = neutral, 02 = calm, 03 = happy, 04 = sad, 05 = angry, 06 = fearful, 07 = disgust, 08 = surprised).
+ * Emotional intensity (01 = normal, 02 = strong). NOTE: There is no strong intensity for the 'neutral' emotion.
+ * Statement (01 = "Kids are talking by the door", 02 = "Dogs are sitting by the door").
+ * Repetition (01 = 1st repetition, 02 = 2nd repetition).
+ * Actor (01 to 24. Odd numbered actors are male, even numbered actors are female).
+ 
+So, here's an example of an audio filename. 02-01-06-01-02-01-12.mp4. This means the meta data for the audio file is:
+
+- Video-only (02)
+- Speech (01)
+- Fearful (06)
+- Normal intensity (01)
+- Statement "dogs" (02)
+- 1st Repetition (01)
+- 12th Actor (12) - Female (as the actor ID number is even)
+
+## Feature Extraction
+
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/spectrogram.png' width='50%' height='50%'>
 
+Feature extraction is important in modeling because it converts audio files into a format that can be understood by models.
 
-Week 3:
-  - Implementing the code for feature extraction using Librosa library
+1. MFCC (Mel-Frequency Cepstral Coefficients)- It is a representation of the short-term power spectrum of a sound, based on linear cosine transformation of a log power spectrum on nonlinear mel frequency scale.
+2. Chroma- It closely relates to the 12 different pitch classes. It captures harmonic and melodic characteristics of music.
+
+  <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/chroma.png' width='50%' height='50%'>
+  
+3. Mel Scale- It is a perceptual scale of pitches judged by listeners to be in equal in distance from one another. 
+4. Zero Crossing Rate (ZCR)- It is the rate at which a signal changes from positive to zero to negative or from negative to zero to positive.
+5. Spectral Centroid- It is the center of 'gravity' of the spectrum. It is a measure used in digital signal processing to characterize a spectrum.
+
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/feature%20extract.png' width='50%' height='50%'>
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/chroma.png' width='50%' height='50%'>
+    
+## Model Implementation
 
-Week 4:
-  - Implement the MLP model for emotion recognition
-  - Evaluating it on test set
+**MLP (Multi-Layer Perceptron) Model:**
+The  arrays containing features of the audios are given as an input to the MLP Classifier that has been  initialized. The Classifier identifies different categories in the datasets  and classifies them into different emotions.
+
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/mlp.png' width='50%' height='50%'>
 
-Week 5:
-  - Implementing LSTM model
-  - Starting to implement CNN model
+**Convolutional Neural Network (CNN):**
+The activation layer called as the RELU layer is  followed by the pooling layer. The specificity of the CNN layer is  learnt from the functions of the activation layer.
+
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/cnn.png' width='50%' height='50%'>
+
 <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/cnn2.png' width='50%' height='50%'>
 
-Week 6:
-  - Complete the CNN model implementation.
-  - Model will be evaluated on our voice
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/record.jpg' width='50%' height='50%'>
-    
-    
-## Results:
+**RNN-LSTM Model:**
+We used RMSProp optimizer to train the RNN-LSTM model, all  the experiments were carried with a fixed learning rate. Batch  Normalization is applied over every layer and the  activation function used is the SoftMax activation function.
 
+<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/Emotion_CNN_Accuracy_Team5.PNG' width='50%' height='50%'>
+
+<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/Emotion_CNN_Loss_Team5.PNG' width='50%' height='50%'>
+
+## Results:
   - CNN model gave an accuracy of 73% 
   - LSTM model gave an accuracy of 71%
   - MLP model gave an accuracy of 62%
 
-## References:
+## Documentation and Poster
+The documentation can be accessed at the following link:
+https://www.overleaf.com/project/60cc4cd9e461496da6c8ce1c
 
-   - <a href='http://aishelf.org/audio-recog/'> http://aishelf.org/audio-recog </a> 
-     
-   - <a href='https://ijesc.org/upload/bc86f90a8f1d88219646b9072e155be4.Speech%20Emotion%20Recognition%20using%20MLP%20Classifier.pdf'> https://ijesc.org/upload/Speech_Emotion_Recognition </a>
-     
-   - <a href='https://rramnauth2220.github.io/blog/posts/code/200525-feature-extraction.html'> https://rramnauth2220.github.io/blog/posts/code/200525-feature-extraction.html </a>
-   - <a href='https://musicinformationretrieval.com/spectral_features.html'> https://musicinformationretrieval.com/spectral_features.html </a>
-   - <a href='https://www.machinecurve.com/index.php/2019/07/27/how-to-create-a-basic-mlp-classifier-with-the-keras-sequential-api/'> https://www.machinecurve.com/how-to-create-a-basic-mlp-classifier-with-the-keras-sequential-api/ </a>
-   - <a href='http://www.jcreview.com/fulltext/197-1594073480.pdf?1625291827'> http://www.jcreview.com/fulltext/197-1594073480.pdf?1625291827 </a>
-   - <a href='https://machinelearningmastery.com/k-fold-cross-validation/'> https://machinelearningmastery.com/k-fold-cross-validation/ </a>
-   - <a href='https://towardsdatascience.com/multi-layer-perceptron-using-tensorflow-9f3e218a4809'> https://towardsdatascience.com/multi-layer-perceptron-using-tensorflow-9f3e218a4809 </a>
-   - <a href='https://machinelearningmastery.com/k-fold-cross-validation/'> https://machinelearningmastery.com/k-fold-cross-validation/ </a>
+The poster can be viewed at the following link:
+https://drive.google.com/file/d/1BMaU_J68fACNt-fm1vPc5KO0vJqWQ2WH/view
 
 
+## References
+1. Python basics: https://github.com/bcs-iitk/BCS_Workshop_Apr_20/tree/master/Python_Tutorial. 
+-Shashi Kant Gupta, founder BCS. 
+2. Intro to ML: https://youtu.be/KNAWp2S3w94 , Basic CV with ML: https://youtu.be/bemDFpNooA8 
+3. Intro to CNN: https://youtu.be/x_VrgWTKkiM , Intro to DL: https://youtu.be/njKP3FqW3Sk
+4. Feature Extraction: https://www.kaggle.com/ashishpatel26/feature-extraction-from-audio , https://youtube.com/playlist?list=PL-wATfeyAMNqIee7cH3q1bh4QJFAaeNv0 ,           https://medium.com/analytics-vidhya/understanding-the-mel-spectrogram-fca2afa2ce53
+5. Research paper: https://ijesc.org/upload/bc86f90a8f1d88219646b9072e155be4.Speech%20Emotion%20Recognition%20using%20MLP%20Classifier.pdf
+6. Research Paper on SER using CNN: https://www.researchgate.net/publication/341922737_Multimodal_speech_emotion_recognition_and_classification_using_convolutional_neural_network_techniques
+7. K Fold Cross Validation: https://machinelearningmastery.com/k-fold-cross-validation/
+8. Research Paper for LSTM Model in SER: http://www.jcreview.com/fulltext/197-1594073480.pdf?1625291827
+9. Dataset: https://www.kaggle.com/uwrfkaggler/ravdess-emotional-speech-audio.
      
