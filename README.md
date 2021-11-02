@@ -89,7 +89,7 @@ We used RMSProp optimizer to train the RNN-LSTM model, all  the experiments were
 
 ## Documentation and Poster
 The documentation can be accessed at the following link:
-https://www.overleaf.com/project/60cc4cd9e461496da6c8ce1c
+https://drive.google.com/file/d/1ojnUU7AOe5E43PwwtJH2CN3Rz2ozQxWA/view?usp=sharing
 
 The poster can be viewed at the following link:
 https://drive.google.com/file/d/1BMaU_J68fACNt-fm1vPc5KO0vJqWQ2WH/view
