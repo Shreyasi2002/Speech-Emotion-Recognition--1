@@ -21,7 +21,8 @@ Learn the basics of Python, ML/DL, NLP, librosa, sklearn, etc , Literature Revie
 ## Dataset
 We have used the RAVDESS Dataset for our project. The Ryerson Audio-Visual Database of Emotional Speech and Song (RAVDESS) contains 7356 files (total size: 24.8 GB). The database contains 24 professional actors (12 female, 12 male), vocalizing two lexically-matched statements in a neutral North American accent.
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/waveform.png' width='50%' height='50%'>
+<img width="665" alt="waveform" src="https://github.com/Shreyasi2002/Speech-Emotion-Recognition--1/assets/75871525/7e5c9107-e723-4249-8972-20e63ab8e08d">
+
 
 Here is the filename identifiers as per the official RAVDESS website:
 
@@ -45,20 +46,19 @@ So, here's an example of an audio filename. 02-01-06-01-02-01-12.mp4. This means
 
 ## Feature Extraction
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/spectrogram.png' width='50%' height='50%'>
+<img width="601" alt="spec" src="https://github.com/Shreyasi2002/Speech-Emotion-Recognition--1/assets/75871525/89618135-3f16-43c9-a5cb-1cd3601846bd">
+
 
 Feature extraction is important in modeling because it converts audio files into a format that can be understood by models.
 
 1. MFCC (Mel-Frequency Cepstral Coefficients)- It is a representation of the short-term power spectrum of a sound, based on linear cosine transformation of a log power spectrum on nonlinear mel frequency scale.
 2. Chroma- It closely relates to the 12 different pitch classes. It captures harmonic and melodic characteristics of music.
-
-  <img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/chroma.png' width='50%' height='50%'>
-  
 3. Mel Scale- It is a perceptual scale of pitches judged by listeners to be in equal in distance from one another. 
 4. Zero Crossing Rate (ZCR)- It is the rate at which a signal changes from positive to zero to negative or from negative to zero to positive.
 5. Spectral Centroid- It is the center of 'gravity' of the spectrum. It is a measure used in digital signal processing to characterize a spectrum.
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/feature%20extract.png' width='50%' height='50%'>
+<img width="921" alt="feature" src="https://github.com/Shreyasi2002/Speech-Emotion-Recognition--1/assets/75871525/074f5daf-8380-4399-afe4-2dc19b3b9106">
+
 
     
 ## Model Implementation
@@ -66,21 +66,13 @@ Feature extraction is important in modeling because it converts audio files into
 **MLP (Multi-Layer Perceptron) Model:**
 The  arrays containing features of the audios are given as an input to the MLP Classifier that has been  initialized. The Classifier identifies different categories in the datasets  and classifies them into different emotions.
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/mlp.png' width='50%' height='50%'>
 
 **Convolutional Neural Network (CNN):**
 The activation layer called as the RELU layer is  followed by the pooling layer. The specificity of the CNN layer is  learnt from the functions of the activation layer.
 
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/cnn.png' width='50%' height='50%'>
-
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/cnn2.png' width='50%' height='50%'>
 
 **RNN-LSTM Model:**
 We used RMSProp optimizer to train the RNN-LSTM model, all  the experiments were carried with a fixed learning rate. Batch  Normalization is applied over every layer and the  activation function used is the SoftMax activation function.
-
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/Emotion_CNN_Accuracy_Team5.PNG' width='50%' height='50%'>
-
-<img src='https://github.com/Shreyasi2002/SpeechEmotionRecognition/blob/master/images/Emotion_CNN_Loss_Team5.PNG' width='50%' height='50%'>
 
 ## Results:
   - CNN model gave an accuracy of 73% 
