@@ -84,7 +84,7 @@ The documentation can be accessed at the following link:
 https://drive.google.com/file/d/1ojnUU7AOe5E43PwwtJH2CN3Rz2ozQxWA/view?usp=sharing
 
 The poster can be viewed at the following link:
-https://drive.google.com/file/d/1BMaU_J68fACNt-fm1vPc5KO0vJqWQ2WH/view
+https://drive.google.com/file/d/1PsmzCaxg3v899fhk8vF_oC2yWWS900V7/view
 
 
 ## References
